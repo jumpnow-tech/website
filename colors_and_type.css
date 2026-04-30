@@ -1,0 +1,226 @@
+/* ============================================================
+   JUMP NOW — Design Tokens
+   Colors & Type foundation.
+   ============================================================ */
+
+/* Fonts — pulled from Google Fonts.
+   Rubik (Black) is the nearest open-source match to the "jumpnow." wordmark.
+   Inter covers all body/UI copy.
+   JetBrains Mono for code/credits lines. */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* -------- Brand colors -------- */
+  --jn-red:        #FF001C; /* the jump red — sampled from mark */
+  --jn-red-600:    #E6001A; /* hover / pressed */
+  --jn-red-700:    #C20016; /* darkest red — on-light only */
+  --jn-red-100:    #FFE5E8; /* red wash, tinted surfaces */
+
+  --jn-ink:        #1A1A1A; /* near-black headings */
+  --jn-charcoal:   #434343; /* wordmark dark — secondary heading */
+  --jn-graphite:   #6B6B6B; /* body copy on light */
+  --jn-slate:      #9A9A9A; /* meta, captions */
+  --jn-mist:       #D4D4D4; /* dividers */
+  --jn-fog:        #EDEDED; /* subtle surfaces */
+  --jn-cloud:      #F6F6F6; /* page backgrounds */
+  --jn-paper:      #FFFFFF;
+
+  /* -------- Semantic fg/bg -------- */
+  --fg-1:    var(--jn-ink);       /* primary heading text */
+  --fg-2:    var(--jn-charcoal);  /* secondary heading / wordmark grey */
+  --fg-3:    var(--jn-graphite);  /* body copy */
+  --fg-4:    var(--jn-slate);     /* meta */
+  --fg-inv:  var(--jn-paper);     /* text on dark */
+  --fg-accent: var(--jn-red);
+
+  --bg-1:    var(--jn-paper);     /* base page */
+  --bg-2:    var(--jn-cloud);     /* sections */
+  --bg-3:    var(--jn-fog);       /* cards on bg-2 */
+  --bg-inv:  var(--jn-ink);       /* dark mode / hero panels */
+  --bg-accent: var(--jn-red);
+
+  --border-1: var(--jn-mist);
+  --border-2: var(--jn-fog);
+  --border-strong: var(--jn-ink);
+
+  /* -------- Typography families -------- */
+  --font-display: 'Rubik', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* -------- Type scale (desktop) -------- */
+  --fs-hero:   clamp(64px, 9vw, 140px);   /* marquee / campaign headlines */
+  --fs-h1:     clamp(44px, 5vw, 72px);
+  --fs-h2:     clamp(32px, 3.5vw, 48px);
+  --fs-h3:     clamp(24px, 2.4vw, 32px);
+  --fs-h4:     20px;
+  --fs-lead:   20px;
+  --fs-body:   16px;
+  --fs-small:  14px;
+  --fs-micro:  12px;
+
+  --lh-tight:  0.92;
+  --lh-snug:   1.1;
+  --lh-normal: 1.5;
+  --lh-loose:  1.7;
+
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.08em;
+  --tracking-widest:  0.18em;
+
+  /* -------- Spacing (4px base) -------- */
+  --sp-0:  0;
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  24px;
+  --sp-6:  32px;
+  --sp-7:  48px;
+  --sp-8:  64px;
+  --sp-9:  96px;
+  --sp-10: 128px;
+
+  /* -------- Radii -------- */
+  --r-sharp: 0;
+  --r-xs:    4px;
+  --r-sm:    8px;
+  --r-md:    14px;
+  --r-lg:    22px;
+  --r-xl:    32px;
+  --r-pill:  999px;
+
+  /* -------- Shadows (subtle — brand is mostly flat) -------- */
+  --shadow-1: 0 1px 2px rgba(26,26,26,.06);
+  --shadow-2: 0 6px 20px rgba(26,26,26,.08);
+  --shadow-3: 0 18px 50px rgba(26,26,26,.12);
+  --shadow-red: 0 10px 30px rgba(255,0,28,.25);
+
+  /* -------- Motion -------- */
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);    /* default UI ease */
+  --ease-pop:      cubic-bezier(0.34, 1.56, 0.64, 1); /* the "jump" — overshoot */
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:      140ms;
+  --dur-med:       240ms;
+  --dur-slow:      480ms;
+  --dur-marquee:   35s;
+}
+
+/* ============================================================
+   Semantic element defaults
+   ============================================================ */
+
+html, body {
+  background: var(--bg-1);
+  color: var(--fg-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.h-hero, h1.hero {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-hero);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  text-transform: lowercase;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  text-transform: lowercase;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  text-transform: lowercase;
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  line-height: 1.15;
+  color: var(--fg-1);
+  text-transform: lowercase;
+}
+
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-h4);
+  line-height: 1.25;
+  color: var(--fg-1);
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-normal);
+  color: var(--fg-2);
+}
+
+p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--fg-3);
+}
+
+.meta, small {
+  font-size: var(--fs-micro);
+  color: var(--fg-4);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--fg-2);
+}
+
+/* Eyebrow — common on the brand for labels above headings */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--fg-accent);
+}
+.eyebrow::before {
+  content: "#";
+  font-family: var(--font-display);
+  font-weight: 900;
+  color: var(--fg-accent);
+}
+
+/* Accent "dot" — the red period after the wordmark */
+.jn-dot {
+  display: inline-block;
+  width: 0.22em;
+  height: 0.22em;
+  border-radius: 50%;
+  background: var(--jn-red);
+  vertical-align: baseline;
+  margin-left: 0.04em;
+  translate: 0 -0.02em;
+}
