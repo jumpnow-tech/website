@@ -1655,7 +1655,6 @@
     });
 
     f.addEventListener('submit', (e) => {
-      e.preventDefault();
       const pane = panes.find(p => p.classList.contains('is-active'));
       let bad = false;
       if (activePane === 'brand') {
@@ -1671,13 +1670,8 @@
           else i.style.borderColor = '';
         });
       }
-      if (bad) return;
-      const successText = activePane === 'brand'
-        ? 'brief received — we\'ll be in touch'
-        : 'thanks — we\'ll review and reach out';
-      btn.querySelector('.label-text').textContent = successText;
-      btn.style.background = 'var(--jn-red)';
-      btn.disabled = true;
+      if (bad) { e.preventDefault(); return; }
+      // validation passed — let form submit naturally to Web3Forms
     });
   })();
 </script>
