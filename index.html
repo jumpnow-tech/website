@@ -1444,7 +1444,6 @@
         <span class="wordmark" aria-hidden="true">jumpnow<span class="dot">.</span></span>
         <span class="label-text visually-hidden">jump now</span>
       </button>
-      <input type="hidden" name="redirect" value="https://jumpnow.agency?submitted=true">
     </form>
   </div>
 </section>
@@ -1654,7 +1653,8 @@
       });
     });
 
-    f.addEventListener('submit', (e) => {
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
       const pane = panes.find(p => p.classList.contains('is-active'));
       let bad = false;
       if (activePane === 'brand') {
@@ -1670,8 +1670,25 @@
           else i.style.borderColor = '';
         });
       }
-      if (bad) { e.preventDefault(); return; }
-      // validation passed — let form submit naturally to Web3Forms
+      if (bad) return;
+
+      // Submit via AJAX — no page refresh
+      const data = new FormData(f);
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        const successText = activePane === 'brand'
+          ? 'brief received — we\'ll be in touch'
+          : 'thanks — we\'ll review and reach out';
+        btn.querySelector('.label-text').textContent = successText;
+        btn.style.background = 'var(--jn-red)';
+        btn.disabled = true;
+        f.reset();
+      }
     });
   })();
 </script>
