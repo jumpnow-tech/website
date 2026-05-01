@@ -1340,15 +1340,21 @@
         </div>
       </div>
     </div>
-    <form class="contact-form reveal" id="contact-form" novalidate>
+    <form class="contact-form reveal" id="contact-form" novalidate 
+      action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="da6ea305-bbd6-411c-99ba-22d9c2445891">
+<input type="hidden" name="subject" value="New JumpNow Enquiry">
+<input type="hidden" name="form_type" id="form_type" value="brand">
       <div class="contact-tabs" id="contact-tabs" role="tablist" aria-label="Choose form type">
         <span class="contact-tab-pill" aria-hidden="true"></span>
-        <button type="button" class="contact-tab is-active" role="tab" aria-selected="true" data-pane="brand">
-          <span class="tab-num">01</span> for brands
-        </button>
-        <button type="button" class="contact-tab" role="tab" aria-selected="false" data-pane="talent">
-          <span class="tab-num">02</span> for talents
-        </button>
+        <button type="button" class="contact-tab is-active" role="tab" aria-selected="true" data-pane="brand"
+  onclick="document.getElementById('form_type').value='brand'">
+  <span class="tab-num">01</span> for brands
+</button>
+<button type="button" class="contact-tab" role="tab" aria-selected="false" data-pane="talent"
+  onclick="document.getElementById('form_type').value='talent'">
+  <span class="tab-num">02</span> for talents
+</button>
       </div>
 
       <!-- BRAND PANE -->
@@ -1438,6 +1444,7 @@
         <span class="wordmark" aria-hidden="true">jumpnow<span class="dot">.</span></span>
         <span class="label-text visually-hidden">jump now</span>
       </button>
+      <input type="hidden" name="redirect" value="https://jumpnow.agency?submitted=true">
     </form>
   </div>
 </section>
